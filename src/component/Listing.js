@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 
 const Listing = (props) => {
-    const {datas,deleteButton,editButton} = props;
-    
+    const [editvalue, setEditValue] = useState(null)
+    const { datas, deleteButton, editButton } = props;
+
+
+
     return (
         <>
-        {datas.map((data,index) => (
-            
+            {datas.map((data, index) => (
+
                 <ul>
-               console index {index} 
-                <li key={index}>
-               {data}  <br/>
-                <button onClick={()=>editButton(index)}>Edit</button>
-                <button onClick={()=>deleteButton(index )}>Delete</button>
-                </li>
+                   
+                    <li key={index}>
+                        {data}  <br />
+                        <input value={datas} onChange={(e) => setEditValue(e.target.value)} />
+                        
+                        <button onClick={() => editButton(index)} >Edit</button>
+                        <button onClick={() => deleteButton(index)}>Delete</button>
+                    </li>
                 </ul>
-             
-        ))}
-           
-           
+
+            ))}
+
+
         </>
     );
 };

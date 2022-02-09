@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import App from './../App';
+
 
 function Add(props) { 
   const {handleSubmit} = props;
