@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{ useState }  from 'react';
+import Add from './component/Add';
+import Listing from './component/Listing';
+import styles from './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+ function App() {
+  const [datas , setDatas] = useState([]);
+  
+ 
+    
+      const handleSubmit = (input,setInput) => {
+          
+          if (!input) {
+            alert("Task to be added should not be empty!")
+          } else {
+            setDatas((a) => [input,...a ])
+           
+      
+            setInput("")
+  
+      
+          }
+
+        }
+          const deleteButton = (index) => {
+
+            const List = [...datas];
+            List.splice(index, 1);
+            setDatas(List);
+           
+        }
+
+
+        const editButton = (index) => {
+
+          console.log(index);
+      
+        }
+      
+      
+        
+      return (
+          <div className="App">
+          {datas}
+         
+         <Add handleSubmit={handleSubmit} />
+         <Listing datas={datas} deleteButton={deleteButton} editButton={editButton}/>
+          </div>
+     
+     );
+  
+   
 }
-
 export default App;
