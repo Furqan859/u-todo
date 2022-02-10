@@ -3,6 +3,7 @@ import Add from './component/Add';
 import Listing from './component/Listing';
 import { BrowserRouter, Routes, Route,Link } from 'react-router-dom';
 import Edit from './component/Edit';
+import Gitcheck from './component/Gitcheck';
 
 
 
@@ -55,6 +56,8 @@ const saveButton=(editvalue,id)=>{
           <Route path='/edit/:id' element={<Edit datas={datas}  saveButton={saveButton} setDatas={setDatas}/>} />
         </Routes>
       </BrowserRouter>
+
+      <Gitcheck/>
 
     </div>
 
