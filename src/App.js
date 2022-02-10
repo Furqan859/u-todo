@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Add from './component/Add';
 import Listing from './component/Listing';
+import { BrowserRouter, Routes, Route,Link } from 'react-router-dom';
 import Edit from './component/Edit';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Navbar from './Navbar';
+
 
 
 function App() {
@@ -30,26 +30,21 @@ function App() {
 
 
   const editButton = (index) => {
-
-
-    console.log("this is edid index ", index)
-
-
+        
+    setDatas(value[index])
   }
 
-
+  <Link to="/">Home</Link>
 
   return (
     <div>
-
-
-
-      <Listing datas={datas} deleteButton={deleteButton} editButton={editButton} />
+      
+    <Add handleSubmit={handleSubmit} />
       <BrowserRouter>
-        <Navbar />
         <Routes>
-          <Route path="/" element={<Add handleSubmit={handleSubmit} />} />
          
+      <Route path='/' element={<Listing datas={datas} deleteButton={deleteButton} editButton={editButton} />} />
+          <Route path='/edit' element={<Edit datas={datas} value={value}/>} />
         </Routes>
       </BrowserRouter>
 

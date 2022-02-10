@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
+
+import { Link } from 'react-router-dom';
+
+
+
 
 const Listing = (props) => {
-    const [editvalue, setEditValue] = useState(null)
-    const { datas, deleteButton, editButton } = props;
+   const { datas, deleteButton, editButton } = props;
+
+
 
 
 
@@ -15,19 +20,24 @@ const Listing = (props) => {
 
                     <li key={index}>
                         {data}  <br />
-                        <input value={data} onChange={(e) => setEditValue(e.target.value)} />
-                        {<BrowserRouter>
-                            <Routes>
-                            <Route path="/edit" element={<button onClick={() => editButton(index)} >Edit</button>} />
+                        <h5> {data}  </h5>
+
+
+                        <Link to='/edit'>
+
+                            {<button onClick={() => editButton(index)} >Edit</button>}
                         
-                        </Routes>
-                        </BrowserRouter>}
+                            </Link>
+
                         <button onClick={() => deleteButton(index)}>Delete</button>
                     </li>
                 </ul>
 
             ))}
 
+            
+
+         
 
         </>
     );
