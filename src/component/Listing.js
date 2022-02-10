@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const Listing = (props) => {
-   const { datas, deleteButton, editButton } = props;
+   const { datas, deleteButton } = props;
 
 
 
@@ -19,13 +19,13 @@ const Listing = (props) => {
                 <ul>
 
                     <li key={index}>
-                        {data}  <br />
-                        <h5> {data}  </h5>
+                      
+                        <h3> {data}  </h3>
 
 
-                        <Link to='/edit'>
+                        <Link to={`edit/${index}`}>
 
-                            {<button onClick={() => editButton(index)} >Edit</button>}
+                            {<button >Edit</button>}
                         
                             </Link>
 

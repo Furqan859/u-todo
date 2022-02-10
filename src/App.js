@@ -29,22 +29,30 @@ function App() {
   }
 
 
-  const editButton = (index) => {
-        
-    setDatas(value[index])
-  }
+  
+const saveButton=(editvalue,id)=>{
+  let newData = [...datas];
+  newData[id] = editvalue;
+  setDatas([...newData]);
+  // const Save = [...datas];
+  // Save.splice(id, 1 ,editvalue );
+  // setDatas(Save);
+}
+  
+
+  
 
   <Link to="/">Home</Link>
 
   return (
     <div>
       
-    <Add handleSubmit={handleSubmit} />
+    
       <BrowserRouter>
         <Routes>
          
-      <Route path='/' element={<Listing datas={datas} deleteButton={deleteButton} editButton={editButton} />} />
-          <Route path='/edit' element={<Edit datas={datas} value={value}/>} />
+      <Route path='/' element={[<Add handleSubmit={handleSubmit} />,<Listing datas={datas} deleteButton={deleteButton} />]} />
+          <Route path='/edit/:id' element={<Edit datas={datas}  saveButton={saveButton} setDatas={setDatas}/>} />
         </Routes>
       </BrowserRouter>
 

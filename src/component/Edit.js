@@ -1,13 +1,25 @@
-import React, { useState }from 'react';
+import React, { useEffect, useState }from 'react';
+import { useParams,Link } from 'react-router-dom';
 
 function Edit(props) {
-    const [editvalue, setEditValue,value] = useState(null)
-    const {datas} = props
+    let {  id } = useParams()
+    const [editvalue, setEditValue] = useState(null)
+    const {datas,saveButton} = props
+
+
+ 
+useEffect(()=>{
+    setEditValue(datas[id])
+},[datas[id]])
+    
     return (
         <div>
-        {datas}
+         
             <input type="text" value={editvalue} onChange={(e) => setEditValue(e.target.value)}/>
-            <button>Save</button>
+      
+            <Link to='/'>
+            <button onClick={()=>saveButton(editvalue,id)}>Save</button>
+            </Link>
         </div>
     );
 }
