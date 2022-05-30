@@ -3,12 +3,14 @@ import Add from './component/Add';
 import Listing from './component/Listing';
 import { BrowserRouter, Routes, Route,Link } from 'react-router-dom';
 import Edit from './component/Edit';
-import Gitcheck from './component/Gitcheck';
+import Header from './pages/header/Header';
+import Footer from './pages/footer/Footer';
+
 
 
 
 function App() {
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState('');
 
 
 
@@ -46,18 +48,20 @@ const saveButton=(editvalue,id)=>{
   <Link to="/">Home</Link>
 
   return (
-    <div>
+    <div className='App'>
       
     
       <BrowserRouter>
+      <Header/>
         <Routes>
          
-      <Route path='/' element={[<Add handleSubmit={handleSubmit} />,<Listing datas={datas} deleteButton={deleteButton} />]} />
+      <Route path='/' element={[<Add handleSubmit={handleSubmit} datas={datas} />,<Listing datas={datas} deleteButton={deleteButton} />]} />
           <Route path='/edit/:id' element={<Edit datas={datas}  saveButton={saveButton} setDatas={setDatas}/>} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
 
-      <Gitcheck/>
+      
 
     </div>
 

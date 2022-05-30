@@ -1,6 +1,7 @@
 import React from 'react';
+import './Add.css';
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -14,28 +15,61 @@ const Listing = (props) => {
 
     return (
         <>
-            {datas.map((data, index) => (
+        { datas.map((data, index) => (
+            <li key={index}>
+        <section id="app">
+        <div className="container">
+          <div className="row">
+            <div className="col-6">
+              <div className="comment">
+            <p v-for="items in item" v-text="items"></p>
+              </div>
+              </div>
+              </div>
+          <div className="row">
+            <div className="col-6">
+            <textarea style={{marginBottom:"-75px"}} value={data}  type="text" className="input" placeholder="Write a comment" v-model="newItem" ></textarea>
 
-                <ul>
+            </div>
+          </div>
+        </div>
+        <div className="container">
+         
+          <div className="row">
+            <div className="col-6">
+            <NavLink to={`edit/${index}`}>
 
-                    <li key={index}>
-                      
-                        <h3> {data}  </h3>
-
-
-                        <Link to={`edit/${index}`}>
-
-                            {<button >Edit</button>}
+                            {<button className='primaryContained float-right' style={{marginRight:"10px"}}>Edit</button>}
                         
-                            </Link>
-
-                        <button onClick={() => deleteButton(index)}>Delete</button>
-                    </li>
-                </ul>
-
-            ))}
-
+                            </NavLink>
+              <button onClick={() => deleteButton(index)} className='primaryContained float-right' >delete</button>
             
+           
+</div>
+          </div>
+        </div>
+        
+      </section>
+    </li>   
+    ))}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
          
 
